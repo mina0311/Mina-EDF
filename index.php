@@ -6,7 +6,7 @@
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-  <script src="main.js"></script>
+  <script type="text/javascript" src="main.js" charset="UTF-8"></script><script src="main.js"></script>
 </head>
 <body>
   
@@ -29,7 +29,7 @@ foreach ($sql->fetchAll (PDO::FETCH_ASSOC)  as $ligne)
     echo "<tr>"; // creation d'une ligne 
       echo "<td>" .$ligne ['nom']."</td>"; // creation d'une colonne 1  
       echo "<td>" .$ligne ['prenom']."</td>"; // creation d'une colonne 2  
-      echo "<td><a href='page2.php?mina1=".$ligne['id']."'> Tous les clients</a></td>"; // creation d'une colonne 3 ou mettre la réference de la table tickets 
+      echo "<td><a href='page2.php?mina1=".$ligne['id']."&nc= ".$ligne['nom']."&pc=".$ligne['prenom']."'> Tous les clients</a></td>"; // creation d'une colonne 3 ou mettre la réference de la table tickets 
     echo "</tr>"; // fermeture d'une ligne 
 }
 
