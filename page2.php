@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <script src="main.js"></script>
+  <form method="POST" action="index.php">
+  <input type="submit" name="home" value="home">
 </head>
 <body>
   
@@ -16,7 +18,7 @@ include ('cnx.php');//  connexion a la BDD
 ?>
 <?php
 echo "<h1> <center> Liste des clients</h1>";
-$sql = $cnx->prepare("select ancienReleve, dernierReleve, nom, prenom from client where idcontroleur ='".$_GET['mina1']."'");// CodeEquipe est une chaine de carac il faut mettre une petite cote 
+$sql = $cnx->prepare("select idcontroleur, ancienReleve, dernierReleve, nom, prenom from client where idcontroleur ='".$_GET['mina1']."'");// CodeEquipe est une chaine de carac il faut mettre une petite cote 
 $sql->execute();
 echo "<table cellpadding='5' cellspacing='1' border='2' align='center'>";
 echo "<tr style='background-color: blue'>";
@@ -33,7 +35,7 @@ foreach ($sql->fetchAll (PDO::FETCH_ASSOC)  as $ligne)
       echo "<td>" .$ligne ['prenom']."</td>";
       echo "<td>" .$ligne ['ancienReleve']."</td>"; // creation d'une colonne 2  
       echo "<td>" .$ligne ['dernierReleve']."</td>";
-      echo "<td><a href='page3.php?mina2=".$ligne['']."'> Nouveau Releve</a></td>"; // creation d'une colonne 3 ou mettre la réference de la table tickets 
+      echo "<td><a href='page3.php?mina2=".$ligne['idcontroleur']."'> Nouveau Releve</a></td>"; // creation d'une colonne 3 ou mettre la réference de la table tickets 
     echo "</tr>"; // fermeture d'une ligne 
 }
 ?>
